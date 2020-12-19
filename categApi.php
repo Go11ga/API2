@@ -14,6 +14,7 @@
      */
     public function indexAction()
     {
+      
       $db = new Categories();
       $items = $db->getAll();
       if($items){
