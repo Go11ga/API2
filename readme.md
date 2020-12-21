@@ -29,3 +29,10 @@ $ https://api2.garrykhr.ru/api/cart/upd?upd=1&param1=100
 $ https://api2.garrykhr.ru/api/cart/del?del=1
 ### Удалить все элементы
 $ https://api2.garrykhr.ru/api/cart/delall?delall=1
+
+# News
+## GET
+### Получить все элементы
+$ https://api2.garrykhr.ru/api/news
+### Получить один элемент { id }
+$ https://api2.garrykhr.ru/api/news/1

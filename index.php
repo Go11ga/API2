@@ -3,6 +3,7 @@
   require_once 'categApi.php';
   require_once 'productApi.php';
   require_once 'cartApi.php';
+  require_once 'newsApi.php';
 
   $requestUri = explode('/', trim($_SERVER['REQUEST_URI'],'/'));
 
@@ -19,6 +20,11 @@
 
     if($requestUri[1] === 'cart'){
       $cartApi = new CartApi();
+      echo $cartApi->run();
+    }
+
+    if($requestUri[1] === 'news'){
+      $cartApi = new NewsApi();
       echo $cartApi->run();
     }
       
