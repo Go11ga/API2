@@ -115,5 +115,7 @@
       }
       return $this->response("Update error", 400);
     }
+
+    public function deleteAllAction(){}
   }
 ?>

@@ -58,5 +58,7 @@
      * * Обновление отдельной записи по id
      */
     public function updateAction(){}
+
+    public function deleteAllAction(){}
   }
 ?>

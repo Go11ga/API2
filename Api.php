@@ -2,14 +2,14 @@
 
   abstract class Api
   {
-    public $apiName = ''; //  categories | products
+    public $apiName = ''; //  categories | products | cart | news
 
     protected $method = ''; //  GET | POST
 
     public $requestUri = [];
     public $requestParams = [];
 
-    protected $action = ''; //  Название метод для выполнения
+    protected $action = ''; //  Название метода для выполнения
 
 
     public function __construct() {
@@ -69,16 +69,20 @@
           break;
 
         case 'POST':
-          if($this->requestParams['title'] ?? ''){
+          if($this->requestParams['add']){
             return 'createAction';
             break;
           }
-          if($this->requestParams['del'] ?? ''){
+          if($this->requestParams['upd']){
+            return 'updateAction';
+            break;
+          }
+          if($this->requestParams['del']){
             return 'deleteAction';
             break;
           }
-          if($this->requestParams['upd'] ?? ''){
-            return 'updateAction';
+          if($this->requestParams['delall']){
+            return 'deleteAllAction';
             break;
           }
         default:
@@ -89,7 +93,8 @@
     abstract protected function indexAction();
     abstract protected function viewAction();
     abstract protected function createAction();
-    abstract protected function deleteAction();
     abstract protected function updateAction();
+    abstract protected function deleteAction(); 
+    abstract protected function deleteAllAction(); 
   }
 ?>
