@@ -1,6 +1,6 @@
 <?php
   require_once 'Api.php';
-  require_once 'db/categories.php';
+  require_once 'db/categories/categories.php';
 
   class CategApi extends Api
   {
@@ -8,8 +8,7 @@
 
     /**
      * Метод GET
-     * * Вывод списка всех записей
-     * http://ДОМЕН/categories
+     * * Получение всех элементов
      * http://api2/api/categories
      */
     public function indexAction()
@@ -25,8 +24,7 @@
 
     /**
      * Метод GET
-     * * Просмотр отдельной записи по id
-     * http://ДОМЕН/categories/1
+     * * Получение одного элемента по id
      * http://api2/api/categories/1
      */
     public function viewAction()
@@ -46,74 +44,71 @@
 
     /**
      * Метод POST
-     * * Создание новой записи
-     * http://ДОМЕН/categories + параметры запроса title, categ
-     * http://api2/api/categories/title?title=sdfg&categ=12345
+     * * Добавление нового элемента
+     * http://api2/api/categories/add?add=1&param1=something&param2=anything
      */
     public function createAction()
     {
-      $title = $this->requestParams['title'] ?? '';
-      $categ = $this->requestParams['categ'] ?? '';
+      // $title = $this->requestParams['param1'] ?? '';
+      // $categ = $this->requestParams['param2'] ?? '';
 
-      if($title && $categ){
-        $db = new Categories();
-        $item = $db->setCategory($title, $categ);
+      // if($title && $categ){
+      //   $db = new Categories();
+      //   $item = $db->setCategory($title, $categ);
 
-        if($item){
-          return $this->response('Data saved.', 200);
-        }
-      }
+      //   if($item){
+      //     return $this->response('Data saved.', 200);
+      //   }
+      // }
 
-      return $this->response("Saving error", 500);
-    }
-
-    /**
-     * Метод POST эмуляция DELETE
-     * * Удаление отдельной записи по id
-     * http://ДОМЕН/categories/1
-     * http://api2/api/categories/del?del=1
-     */
-    public function deleteAction()
-    {
-      $itemId = $this->requestParams['del'] ?? '';
-    
-      $db = new Categories();
-      $item = $db->getById($itemId);
-      
-      if(!$itemId || !$item){
-        return $this->response("User with id=$itemId not found", 404);
-      }
-
-      if($db->deleteById($itemId)){
-        return $this->response('Data deleted.', 200);
-      }
-      return $this->response("Delete error", 500);
+      // return $this->response("Saving error", 500);
     }
 
     /**
      * Метод POST эмуляция PUT
-     * * Обновление отдельной записи по id
-     * http://ДОМЕН/categories/1 + параметры запроса title, categ
-     * http://api2/api/categories/upd?upd=2&newtitle=sdfg&newcateg=12345
+     * * Обновление элемента по id
+     * http://api2/api/categories/upd?upd=1&param1=new&param2=new
      */
     public function updateAction()
     {
-      $itemId = $this->requestParams['upd'] ?? '';
-      $title = $this->requestParams['newtitle'] ?? '';
-      $categ = $this->requestParams['newcateg'] ?? '';
+      // $id = $this->requestParams['upd'] ?? '';
+      // $title = $this->requestParams['param1'] ?? '';
+      // $categ = $this->requestParams['param2'] ?? '';
 
-      $db = new Categories();
-      $item = $db->getById($itemId);
+      // $db = new Categories();
+      // $item = $db->getById($id);
 
-      if(!$itemId || is_null($item)){
-        return $this->response("Category with id=$itemId not found", 404);
-      }
-      if($title && $categ){
-        if($db->updateById($itemId, $title, $categ)){
-          return $this->response('Data updated.', 200);
-        }
-      }
-      return $this->response("Update error", 400);
+      // if(!$id || is_null($item)){
+      //   return $this->response("Category with id=$id not found", 404);
+      // }
+      // if($title && $categ){
+      //   if($db->updateById($id, $title, $categ)){
+      //     return $this->response('Data updated.', 200);
+      //   }
+      // }
+      // return $this->response("Update error", 400);
+    }
+
+    /**
+     * Метод POST эмуляция DELETE
+     * * Удаление элемента по id
+     * http://api2/api/categories/del?del=1
+     */
+    public function deleteAction()
+    {
+      // $itemId = $this->requestParams['del'] ?? '';
+    
+      // $db = new Categories();
+      // $item = $db->getById($itemId);
+      
+      // if(!$itemId || !$item){
+      //   return $this->response("User with id=$itemId not found", 404);
+      // }
+
+      // if($db->deleteById($itemId)){
+      //   return $this->response('Data deleted.', 200);
+      // }
+      // return $this->response("Delete error", 500);
     }
 
     public function deleteAllAction(){}

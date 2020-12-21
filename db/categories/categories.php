@@ -1,40 +1,40 @@
 <?php
   class Categories {
     /**
-     * * Получить все категории
+     * * Получение всех элементов
      */
     public function getAll () {
-      $text  = file_get_contents('db/categories.txt');
+      $text  = file_get_contents('db/categories/categories.txt');
       $arr = json_decode($text);
       return $arr;
     }
 
     /**
-     * * Получить категорию по id
+     * * Получение одного элемента по id
      * @param { number } $id
      */
     public function getById ($id) {
-      $text  = file_get_contents('db/categories.txt');
+      $text  = file_get_contents('db/categories/categories.txt');
       $arr = json_decode($text);
 
-      $category;
+      $item;
       foreach($arr as $el) {
         $array = (array) $el;
         if($array['id'] == $id) {
-          $category = $array;
+          $item = $array;
         }
       }
 
-      return $category;
+      return $item;
     }
 
     /**
-     * * Добавить новую категорию
+     * * Добавление нового элемента
      * @param { string } $title
      * @param { string } $categ
      */
     public function setCategory($title, $categ) {
-      $text = file_get_contents('db/categories.txt');
+      $text = file_get_contents('db/categories/categories.txt');
       $arr = json_decode($text);
 
       $currentId = 0;
@@ -63,45 +63,19 @@
 
       $arr2 = array_values($arr);
       $result = json_encode($arr2);
-      file_put_contents('db/categories.txt', $result);
+      file_put_contents('db/categories/categories.txt', $result);
 
       return true;
     }
 
     /**
-     * * Удалить категорию по id
-     * @param { number } $id
-     */
-    public function deleteById($id) {
-      $text = file_get_contents('db/categories.txt');
-      $arr = json_decode($text);
-
-      $ind;
-      foreach($arr as $key => $el) {
-        $array = (array) $el;
-        if($array['id'] == $id) {
-          $ind = $key;
-        }
-      }
-
-      unset($arr[$ind]);
-
-      $arr2 = array_values($arr);
-      $result = json_encode($arr2);
-
-      file_put_contents('db/categories.txt', $result);
-
-      return true;
-    }
-
-    /**
-     * * Обновить категорию по id
+     * * Обновление элемента по id
      * @param { number } $id
      * @param { string } $title
      * @param { string } $categ
      */
     public function updateById($id, $title, $categ) {
-      $text = file_get_contents('db/categories.txt');
+      $text = file_get_contents('db/categories/categories.txt');
       $arr = json_decode($text);
 
       $ind;
@@ -122,7 +96,33 @@
       $arr[$ind] = $object;
       $arr2 = array_values($arr);
       $result = json_encode($arr2);
-      file_put_contents('db/categories.txt', $result);
+      file_put_contents('db/categories/categories.txt', $result);
+
+      return true;
+    }
+
+    /**
+     * * Удаление элемента по id
+     * @param { number } $id
+     */
+    public function deleteById($id) {
+      $text = file_get_contents('db/categories/categories.txt');
+      $arr = json_decode($text);
+
+      $ind;
+      foreach($arr as $key => $el) {
+        $array = (array) $el;
+        if($array['id'] == $id) {
+          $ind = $key;
+        }
+      }
+
+      unset($arr[$ind]);
+
+      $arr2 = array_values($arr);
+      $result = json_encode($arr2);
+
+      file_put_contents('db/categories/categories.txt', $result);
 
       return true;
     }
