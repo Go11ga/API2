@@ -1,6 +1,6 @@
 <?php
   require_once 'Api.php';
-  require_once 'db/products.php';
+  require_once 'db/products/products.php';
 
   class ProductApi extends Api
   {
@@ -8,7 +8,7 @@
 
     /**
      * Метод GET
-     * * Вывод списка всех записей
+     * * Получение всех элементов
      * http://api2/api/products
      */
     public function indexAction()
@@ -23,7 +23,7 @@
 
     /**
      * Метод GET
-     * * Просмотр отдельной записи по id
+     * * Получение одного элемента по id
      * http://api2/api/products/1
      */
     public function viewAction()
@@ -41,24 +41,9 @@
       }
     }
 
-    /**
-     * Метод POST
-     * * Создание новой записи
-     */
     public function createAction(){}
-   
-    /**
-     * Метод POST эмуляция DELETE
-     * * Удаление отдельной записи по id
-     */
-    public function deleteAction(){}
-  
-    /**
-     * Метод POST эмуляция PUT
-     * * Обновление отдельной записи по id
-     */
     public function updateAction(){}
-
+    public function deleteAction(){}
     public function deleteAllAction(){}
   }
 ?>

@@ -1,8 +1,6 @@
 # API
 
-
 # Categories
-
 ## GET
 ### Получить все элементы
 $ https://api2.garrykhr.ru/api/categories
@@ -10,22 +8,18 @@ $ https://api2.garrykhr.ru/api/categories
 $ https://api2.garrykhr.ru/api/categories/1
 
 # Products
-
 ## GET
-
 ### Получить все элементы
 $ https://api2.garrykhr.ru/api/products
-### Получить один элемент
+### Получить один элемент { id }
 $ https://api2.garrykhr.ru/api/products/1
 
 # Cart
-
 ## GET
 ### Получить все элементы
 $ https://api2.garrykhr.ru/api/cart
 ### Получить один элемент { id }
 $ https://api2.garrykhr.ru/api/cart/1
-
 ## POST
 ### Добавить элемент { id, qty }
 $ https://api2.garrykhr.ru/api/cart/add?add=1&param1=2
