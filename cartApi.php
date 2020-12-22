@@ -15,10 +15,8 @@
     {
       $db = new Cart();
       $items = $db->getAll();
-      if($items){
-        return $this->response($items, 200);
-      }
-      return $this->response('Data not found', 404);
+      
+      return $this->response($items, 200);
     }
 
     /**
